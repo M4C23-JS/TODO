@@ -1,4 +1,4 @@
-# TODO Lista de Tareas
+# TODO Lista de Tareas v2.0 - USO DE LOCALSTORAGE
 
 Este es el repositorio para mi proyecto de Lista de Tareas con JS
 
