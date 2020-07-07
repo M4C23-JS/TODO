@@ -7,11 +7,13 @@ const insertarNuevaTarea = (e) => {
         let nombreTodo = e.target.value
         let todoInstance = new Todo(nombreTodo)
        
-        ListTodoInstance.NuevaTarea(todoInstance)
+        ListTodoInstance.NuevaTareaHTML(todoInstance)
         //console.log(ListTodoInstance)
         //console.log(e)
+        ListTodoInstance.nuevaTarea(todoInstance)
         e.target.value = ""
         contarPendientes()
+        
     }  
 }
 

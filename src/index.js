@@ -1,5 +1,5 @@
 import './styles.css'
-import {ListTodo} from './classes/index.js';
+import {ListTodo, Todo} from './classes/index.js';
 import {    
     borrarCompletados,
     filtrarTodos,
@@ -18,6 +18,10 @@ const btnBorrar = document.querySelector('.clear-completed');
 
 const lis = todoList.children
 const ListTodoInstance = new ListTodo();
+const TodoInstance = new Todo();
+
+ListTodoInstance.todos.forEach(todo => ListTodoInstance.NuevaTareaHTML(todo) );
+//ListTodoInstance.todos[0].imprimirTodo()
 
 newTodo.addEventListener('keyup',insertarNuevaTarea );
 todoList.addEventListener('click', toggleEstadoTarea );

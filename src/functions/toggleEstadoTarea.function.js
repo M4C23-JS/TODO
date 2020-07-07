@@ -16,6 +16,7 @@ const toggleEstadoTarea = (e) => {
         //console.log(arr)
         //console.log(arr2[0])
         contarPendientes()
+        ListTodoInstance.guardarLocalStorage()
     }
 }
 

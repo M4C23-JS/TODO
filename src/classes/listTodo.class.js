@@ -1,10 +1,34 @@
+import {Todo} from './todo.class'
+
 export class ListTodo {
      
     constructor(){
-        this.todos = []
+        this.cargarLocalStorage()
     }
-    NuevaTarea(todo){
+
+    guardarLocalStorage(){
+        localStorage.setItem('todo', JSON.stringify(this.todos) )
+    }
+
+    cargarLocalStorage(){
+        if(localStorage.getItem('todo')){
+            this.todos = JSON.parse(localStorage.getItem('todo'))
+            
+        } else {
+            this.todos = []
+        }
+        
+        this.todos = this.todos.map(todo => Todo.fromJson(todo))
+        
+    }
+
+    nuevaTarea(todo){
         this.todos.push(todo)
+        this.guardarLocalStorage()
+    }
+
+    NuevaTareaHTML(todo){
+        
         const listTodos = document.querySelector('.todo-list')
         let div = document.createElement('div')
         let estadoTodo = todo.estado ? "completed" : ""
@@ -19,6 +43,7 @@ export class ListTodo {
 		</li> 
         `
         listTodos.append(div.firstElementChild)
+        
     }
     completarTarea(id) {
         this.todos[id].estado = true
@@ -47,8 +72,12 @@ export class ListTodo {
 
     }   
     borrarCompletados(lis){
+
         for (let x = lis.length-1; x >= 0; x--){
-            lis[x].classList.value == 'completed' ? lis[x].outerHTML = null : ''  
+            if (lis[x].classList.value == 'completed') {
+                lis[x].outerHTML = null  
+                this.todos.splice(x,1)
+            } 
         }
     }
 
